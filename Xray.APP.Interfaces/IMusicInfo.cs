@@ -5,25 +5,25 @@ using System.Text;
 namespace Xray.APP.Interfaces
 {
     /// <summary>
-    /// 用户信息接口
+    /// 单曲信息
     /// </summary>
-    public interface IUserInfo
+    public interface IMusicInfo
     {
         /// <summary>
-        /// 平台类型
+        /// 标题
         /// </summary>
-        PlatformType platform { get; set; }
+        String title { get; set; }
         /// <summary>
-        /// 头像
+        /// 时长
         /// </summary>
-        String image { get; set; }
+        String time { get; set; }
         /// <summary>
-        /// 用户昵称
+        /// 歌手
         /// </summary>
-        String name { get; set; }
+        String singer { get; set; }
         /// <summary>
-        /// 歌单列表
+        /// 专辑
         /// </summary>
-        List<IMusicList> musicLists { get; set; }
+        String album { get; set; }
     }
 }
