@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Xray.APP.Entitys\Xray.APP.Entitys.csproj" />
-    <ProjectReference Include="..\Xray.APP.Interfaces\Xray.APP.Interfaces.csproj" />
+    <ProjectReference Include="..\Xray.APP.Entitys\Xray.APP.Impoter.Entitys.csproj" />
+    <ProjectReference Include="..\Xray.APP.Interfaces\Xray.APP.Impoter.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

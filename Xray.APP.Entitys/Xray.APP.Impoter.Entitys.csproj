@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Xray.APP.Impoter.Entitys</AssemblyName>
+    <RootNamespace>Xray.APP.Impoter.Entitys</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Xray.APP.Impoter.Platform\Xray.APP.Impoter.Platform.csproj" />
     <ProjectReference Include="..\Xray.APP.Interfaces\Xray.APP.Impoter.Interfaces.csproj" />
   </ItemGroup>
 

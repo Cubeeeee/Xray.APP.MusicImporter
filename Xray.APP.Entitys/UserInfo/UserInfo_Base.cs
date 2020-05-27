@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Xray.APP.Interfaces;
+using Xray.APP.Impoter.Interfaces;
 
-namespace Xray.APP.Entitys.UserInfo
+namespace Xray.APP.Impoter.Entitys.UserInfo
 {
     /// <summary>
     /// 用户信息抽象基类

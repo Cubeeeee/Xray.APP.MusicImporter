@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Xray.APP.Entitys.MusicInfo
+namespace Xray.APP.Impoter.Entitys.MusicInfo
 {
     public class MusicInfo_163: MusicInfo_Base
     {

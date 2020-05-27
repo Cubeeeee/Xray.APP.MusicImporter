@@ -2,13 +2,11 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Xray.APP.Entitys.LoginInfo;
-using Xray.APP.Entitys.MusicInfo;
-using Xray.APP.Entitys.MusicList;
-using Xray.APP.Entitys.UserInfo;
+using Xray.APP.Impoter.Entitys.LoginInfo;
+using Xray.APP.Impoter.Entitys.MusicList;
+using Xray.APP.Impoter.Entitys.UserInfo;
+using Xray.APP.Impoter.Interfaces;
 using Xray.APP.Impoter.Platform.Helper;
-using Xray.APP.Interfaces;
 using Xray.Tools.ExtractLib.Encode;
 using Xray.Tools.ExtractLib.Extract;
 using Xray.Tools.ExtractLib.Extract.ExtractParms;
@@ -101,7 +99,7 @@ namespace Xray.APP.Impoter.Platform
 
         private List<IMusicInfo> GetMusic(int songcount)
         {
-
+            return null;
             throw new NotImplementedException();
         }
 

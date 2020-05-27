@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xray.APP.Interfaces;
+using Xray.APP.Impoter.Interfaces;
 
-namespace Xray.APP.Entitys.LoginInfo
+namespace Xray.APP.Impoter.Entitys.LoginInfo
 {
     /// <summary>
     /// 登录信息基类
     /// </summary>
-   public abstract  class LoginInfo_Base:ILoginInfo
+    public abstract  class LoginInfo_Base:ILoginInfo
     {
         public String cookie { get; set; }
 

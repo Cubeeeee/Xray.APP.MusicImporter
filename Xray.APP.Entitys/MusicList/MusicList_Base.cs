@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Xray.APP.Interfaces;
+using Xray.APP.Impoter.Interfaces;
 
-namespace Xray.APP.Entitys.MusicList
+namespace Xray.APP.Impoter.Entitys.MusicList
 {
     public abstract class MusicList_Base: IMusicList
     {

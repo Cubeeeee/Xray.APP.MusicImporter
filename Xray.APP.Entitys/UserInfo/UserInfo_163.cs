@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Xray.APP.Interfaces;
+using Xray.APP.Impoter.Interfaces;
 
-namespace Xray.APP.Entitys.UserInfo
+namespace Xray.APP.Impoter.Entitys.UserInfo
 {
     public class UserInfo_163 : UserInfo_Base
     {

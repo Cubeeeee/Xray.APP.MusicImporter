@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xray.APP.Interfaces", "Xray.APP.Interfaces\Xray.APP.Interfaces.csproj", "{FE7FBACF-00C6-4839-B3AC-1134960FE85E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Interfaces", "Xray.APP.Interfaces\Xray.APP.Impoter.Interfaces.csproj", "{FE7FBACF-00C6-4839-B3AC-1134960FE85E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xray.APP.Entitys", "Xray.APP.Entitys\Xray.APP.Entitys.csproj", "{54F91E70-150D-438B-ADC1-5FBB212DA9D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Entitys", "Xray.APP.Entitys\Xray.APP.Impoter.Entitys.csproj", "{54F91E70-150D-438B-ADC1-5FBB212DA9D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{ACBF3A09-3A84-4929-AB12-213384D0D623}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xray.APP.TestDemo", "Xray.APP.TestDemo\Xray.APP.TestDemo.csproj", "{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.TestDemo", "Xray.APP.TestDemo\Xray.APP.TestDemo.csproj", "{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xray.APP.Impoter.Platform", "Xray.APP.Impoter.Platform\Xray.APP.Impoter.Platform.csproj", "{8BBCBC5D-B1C0-4D17-856C-D9B64E146414}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Platform", "Xray.APP.Impoter.Platform\Xray.APP.Impoter.Platform.csproj", "{8BBCBC5D-B1C0-4D17-856C-D9B64E146414}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

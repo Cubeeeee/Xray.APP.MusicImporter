@@ -1,6 +1,6 @@
 ﻿using System;
 using Xray.APP.Impoter.Platform;
-using Xray.APP.Interfaces;
+using Xray.APP.Impoter.Interfaces;
 
 namespace Xray.APP.TestDemo
 {

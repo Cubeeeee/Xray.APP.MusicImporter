@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xray.APP.Entitys.MusicList
+namespace Xray.APP.Impoter.Entitys.MusicList
 {
     public class MusicList_163: MusicList_Base
     {

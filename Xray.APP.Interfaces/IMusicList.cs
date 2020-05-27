@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Xray.APP.Interfaces
+namespace Xray.APP.Impoter.Interfaces
 {
     /// <summary>
     /// 歌单相关接口

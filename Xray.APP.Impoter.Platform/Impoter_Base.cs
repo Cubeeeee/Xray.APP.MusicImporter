@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xray.APP.Interfaces;
+using Xray.APP.Impoter.Interfaces;
 
 namespace Xray.APP.Impoter.Platform
 {
