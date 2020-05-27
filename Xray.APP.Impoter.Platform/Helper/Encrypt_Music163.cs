@@ -7,7 +7,7 @@ using Xray.Tools.ExtractLib.Encode;
 
 namespace Xray.APP.Impoter.Platform.Helper
 {
-    //来源 https://github.com/IllyaTheHath/Music163Api/blob/master/NeteaseCloudMusicTool/Encrypt.cs
+    //原代码来源 https://github.com/IllyaTheHath/Music163Api/blob/master/NeteaseCloudMusicTool/Encrypt.cs
     /// <summary>
     /// 网易云音乐数据加密
     /// </summary>

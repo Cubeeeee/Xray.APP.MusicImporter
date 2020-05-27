@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Interfaces", "Xray.APP.Interfaces\Xray.APP.Impoter.Interfaces.csproj", "{FE7FBACF-00C6-4839-B3AC-1134960FE85E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Entitys", "Xray.APP.Entitys\Xray.APP.Impoter.Entitys.csproj", "{54F91E70-150D-438B-ADC1-5FBB212DA9D3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{ACBF3A09-3A84-4929-AB12-213384D0D623}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.TestDemo", "Xray.APP.TestDemo\Xray.APP.TestDemo.csproj", "{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Platform", "Xray.APP.Impoter.Platform\Xray.APP.Impoter.Platform.csproj", "{8BBCBC5D-B1C0-4D17-856C-D9B64E146414}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Entitys", "Xray.APP.Impoter.Entitys\Xray.APP.Impoter.Entitys.csproj", "{36F739ED-62C4-45E1-A677-E6D217EBF879}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Interfaces", "Xray.APP.Impoter.Interfaces\Xray.APP.Impoter.Interfaces.csproj", "{90123C49-CAFE-4031-B964-E44DAD96A5DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE7FBACF-00C6-4839-B3AC-1134960FE85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE7FBACF-00C6-4839-B3AC-1134960FE85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE7FBACF-00C6-4839-B3AC-1134960FE85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE7FBACF-00C6-4839-B3AC-1134960FE85E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54F91E70-150D-438B-ADC1-5FBB212DA9D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54F91E70-150D-438B-ADC1-5FBB212DA9D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54F91E70-150D-438B-ADC1-5FBB212DA9D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54F91E70-150D-438B-ADC1-5FBB212DA9D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +27,14 @@ Global
 		{8BBCBC5D-B1C0-4D17-856C-D9B64E146414}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BBCBC5D-B1C0-4D17-856C-D9B64E146414}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BBCBC5D-B1C0-4D17-856C-D9B64E146414}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36F739ED-62C4-45E1-A677-E6D217EBF879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F739ED-62C4-45E1-A677-E6D217EBF879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F739ED-62C4-45E1-A677-E6D217EBF879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F739ED-62C4-45E1-A677-E6D217EBF879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90123C49-CAFE-4031-B964-E44DAD96A5DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90123C49-CAFE-4031-B964-E44DAD96A5DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90123C49-CAFE-4031-B964-E44DAD96A5DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90123C49-CAFE-4031-B964-E44DAD96A5DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

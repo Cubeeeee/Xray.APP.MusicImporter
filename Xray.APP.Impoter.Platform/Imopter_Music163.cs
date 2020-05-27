@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using Xray.APP.Impoter.Entitys.LoginInfo;
+using Xray.APP.Impoter.Entitys.MusicInfo;
 using Xray.APP.Impoter.Entitys.MusicList;
 using Xray.APP.Impoter.Entitys.UserInfo;
 using Xray.APP.Impoter.Interfaces;
@@ -63,6 +64,7 @@ namespace Xray.APP.Impoter.Platform
                     foreach (var item in jobj.SelectTokens("playlist.[*]"))
                     {
                         int songcount = default;
+                        String musiclist_id = Convert.ToString(item.SelectToken("id"));
                         try
                         {
                             songcount = Convert.ToInt32(item.SelectToken("trackCount"));
@@ -78,13 +80,13 @@ namespace Xray.APP.Impoter.Platform
                             createtime = EncodeMethod.GetDateTime(Convert.ToString(item.SelectToken("createTime"))),
                             updatetime = EncodeMethod.GetDateTime(Convert.ToString(item.SelectToken("updateTime"))),
                             musicListType = Convert.ToString(item.SelectToken("creator.userId")).Equals(userid) ? MusicListType.Owner : MusicListType.Collection,
-                            musiclist_id = Convert.ToString(item.SelectToken("id")),
+                            musiclist_id = musiclist_id,
                             name = Convert.ToString(item.SelectToken("name")),
                             songcount = Convert.ToString(songcount),
                             musiclist_province = Convert.ToString(item.SelectToken("creator.province")),
                             musiclist_city = Convert.ToString(item.SelectToken("creator.city")),
                             playtimes = Convert.ToString(item.SelectToken("playCount")),
-                             musics = GetMusic(songcount)
+                             musics = GetMusic(musiclist_id,songcount)
                         };
                         lists.Add(templist);
                     }
@@ -96,11 +98,33 @@ namespace Xray.APP.Impoter.Platform
             }
             return lists;
         }
-
-        private List<IMusicInfo> GetMusic(int songcount)
+        /// <summary>
+        /// 歌单详情
+        /// </summary>
+        /// <param name="musiclist_id">歌单id</param>
+        /// <param name="songcount">歌曲数</param>
+        /// <returns></returns>
+        private List<IMusicInfo> GetMusic(String musiclist_id, int songcount)
         {
-            return null;
-            throw new NotImplementedException();
+            List<IMusicInfo> musicInfos = new List<IMusicInfo>();
+            HttpItem item = new HttpItem {
+                URL = $"https://music.163.com/#/playlist?id={musiclist_id}",
+                UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36",
+                //小于6条不需要登录  不传cookie
+                Cookie = songcount > 6 ? logininfo.cookie : String.Empty
+            };
+            var result_playlist = HttpMethod.HttpWork(item);
+            if(result_playlist.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                musicInfos.Add(new MusicInfo_163 { 
+                 //title = 
+                });
+            }
+            else
+            {
+                throw new Exception("获取歌单详情失败");
+            }
+            return musicInfos;
         }
 
         public override void Login()

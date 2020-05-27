@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Xray.APP.Impoter.Interfaces\Xray.APP.Impoter.Interfaces.csproj" />
     <ProjectReference Include="..\Xray.APP.Impoter.Platform\Xray.APP.Impoter.Platform.csproj" />
-    <ProjectReference Include="..\Xray.APP.Interfaces\Xray.APP.Impoter.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
