@@ -116,6 +116,9 @@ namespace Xray.APP.Impoter.Platform
             var result_playlist = HttpMethod.HttpWork(item);
             if(result_playlist.StatusCode == System.Net.HttpStatusCode.OK)
             {
+                String html = result_playlist.Html;
+                var data = ExtractMethod.GetResult(ExtractType.Xpath, html, "//*[@id=\"song-list-pre-data\"]");
+                var datakey = ExtractMethod.GetResult(ExtractType.Xpath, html, "/html/body/div[3]/div/div/div/div/div/img",new XpathPam {  Attr = "data-key" });
                 musicInfos.Add(new MusicInfo_163 { 
                  //title = 
                 });
