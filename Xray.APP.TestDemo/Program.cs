@@ -10,7 +10,7 @@ namespace Xray.APP.TestDemo
         {
             IMusicPlatform platform = new Imopter_Music163();
             platform.Login();
-            platform.GetUserInfo();
+            platform.CreateMusicList("test1");
             //platform.OutPutMusicListToExcel();
             Console.WriteLine("完毕");
             Console.ReadLine();

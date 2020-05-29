@@ -40,6 +40,7 @@ namespace Xray.APP.Impoter.Platform.Helper
             var encText = AesEncrypt(encTextFisrt, secKey, iv);
             // rsa
             var encSecKey = RsaEncrypt(secKey, pubKey, modulus);
+            Console.WriteLine(encSecKey);
             var data =$"params={EncodeMethod.Encode( EncodeType.UrlEncode, encText)}&encSecKey={encSecKey}";
             return data;
         }

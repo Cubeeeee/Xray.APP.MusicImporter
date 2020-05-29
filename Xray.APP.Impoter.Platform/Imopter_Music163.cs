@@ -24,6 +24,7 @@ namespace Xray.APP.Impoter.Platform
 {
     public class Imopter_Music163 : Impoter_Base
     {
+        const String UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0";
         public override void GetUserInfo()
         {
             //获取用户昵称 id 头像
@@ -54,7 +55,7 @@ namespace Xray.APP.Impoter.Platform
                 ContentType = "application/x-www-form-urlencoded; charset=UTF-8",
                 Method = "POST",
                 Referer = "https://music.163.com/",
-                UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36",
+                UserAgent = UA,
                 Postdata = Encrypt_Music163.EncryptedRequest(JsonConvert.SerializeObject(new
                 {
                     uid = userid,
@@ -63,7 +64,8 @@ namespace Xray.APP.Impoter.Platform
                     total = "true",
                     limit = "36",
                     csrf_token = ""
-                }))
+                })),
+                 
             });
             if (result_playlist.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -124,7 +126,7 @@ namespace Xray.APP.Impoter.Platform
             HttpItem item = new HttpItem
             {
                 URL = $"https://music.163.com/#/playlist?id={musiclist_id}",
-                UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36",
+                UserAgent = UA,
                 //小于6条不需要登录  不传cookie
                 Cookie = songcount > 6 ? logininfo.cookie : String.Empty
             };
@@ -207,7 +209,7 @@ namespace Xray.APP.Impoter.Platform
 
         public override void Login()
         {
-            this.logininfo = new LoginInfo_163 { cookie = "_iuqxldmzr_=32; _ntes_nnid=6234c151afd63ea2566b4ed32769fed2,1589432018523; _ntes_nuid=6234c151afd63ea2566b4ed32769fed2; WM_TID=gDRxNAjFc6NBQUFVREdvCRJTlTrq1VtN; MUSIC_U=02969969aff49cc77a133c97e7e915de8ba689fefc8b4f08f2ee7599cdd8288a93597ed9d457305327d9901adef0efa4c3061cd18d77b7a0; __remember_me=true; __csrf=ab85e29fecca09c64ef49150377febe0; ntes_kaola_ad=1; JSESSIONID-WYYY=%2F%2FoTDJ0sfV0V%2BZbAGV%2B2%5CxA2iTFCOeNqOTmhPhwdbjs2ox%2FHaTN5JXOg7NEnyoWGSmVchcasH%5C2%2FBUbEhuFDkl8asCdpv%5C2mrbQ%5CUkjUZwP%2B6lDImsp4flU2EuK3BmJkEpv1hKv7Wg2E7UITj54YB9T1rA5OFrj3BPVeRQSuGApZufTH%3A1590462748428; WM_NI=b5IaA1%2FopLx8bI%2Flyor7Zo4CmbIxKJ5BzT1bIeDIZxNwglisC09EKOahFOpmzdtpEEd%2BTS7ZmUMimMkiyAXc4wK8nnOeXj0yA%2BTe%2FHymC5KPKsnXJ031mWokqLO%2BbEPBM1k%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6ee89ca708c86feaddb3a8e968bb3d54b979f9fbbb6598888a1d9ae5b908f978fdb2af0fea7c3b92aa2eb8782c43bedb1c0adfb34a297e18dfc65b2e99690b749afbe8799ca42f79eb6b5b46a8bbb8caad9748ea9a98dec7981f0f7a6ca45a3b88ab0f367babcbc91c84fa8f59cb4b652af8b838af047a9b7b7a2db69f8a985d9ed668dbb988bb37383f59c86ae44bbb38dd6ca5c89ada2b9c93cf1efa3b8ee61b39481cce14f949e83d2ea37e2a3" };
+            this.logininfo = new LoginInfo_163 { cookie = "JSESSIONID-WYYY=u8F6EdvHP7f%2BM0b1I5kDoZ%5CcCYNoF0HpBg%2FBxDamK83rBEuplhl9XB2RZU2ZPYVigqrka5GHYl%2BdjcGSoA8lxr%5C5zoQj6CWj9l6%2FT1TlsQ%5CxO8HjlU%5CEE8Dgegl3RXjuA6fiYXVKCXWT%5C4eERb9PMadui%5COs%5CDhnT%2FE0QG1JKx7KXEyz%3A1590746230847; _iuqxldmzr_=32; _ntes_nnid=9443153b364c4a672be28ceb6be416f2,1590565485214; _ntes_nuid=9443153b364c4a672be28ceb6be416f2; WM_NI=nTY9lsMyaPBKTJI%2FYsSUA%2BUg1w8uSEXeUsq6l49bmo7nPYQZMTzfNX2YZIbXXO8XeiF5k0nW%2FFwmrtR8lCv5w1dl0luK8lx8j8oSYj28ZeFcwnn0MLBH5qAXVSN054wFWWE%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6eea4b83dfbee8a84e13eb7b08ea7d45a939f9fbaf5508591ba90d46e94b29b84e72af0fea7c3b92aae8c97daef798fa7afb1c141989687d0dc79918b8fccd86df3a9f896d24f9cbb9b94f43eb0ecf783f065f5b2a0bad4528f8cb687cd54f28796aae1549c91f8b9e86386eba5d1ed5ded9ab98ef18092e8a4a4f53fb5efac8db368b795f88dfb34aae8a1b4dc62f2e89686c569b5b2a2d1d0488298fb92c454968d82d1b840b59a99b8c837e2a3; WM_TID=fZj46A%2BR3W1BBVEQUBYuXXNiRmswwU8P; MUSIC_U=692dd5da248da10ebc9df0fe720b89da660c7855cf4ec47035ea031e17da4a1a33a649814e309366; __remember_me=true; __csrf=3098a1827297e2b132274f6e6c217aa0; ntes_kaola_ad=1" };
         }
 
         public override void OutPutMusicListToExcel()
@@ -248,6 +250,45 @@ namespace Xray.APP.Impoter.Platform
                 }
 
             }
+        }
+
+        public override void AddMusicToList(params object[] parms)
+        {
+      
+            throw new NotImplementedException();
+        }
+
+        public override void CreateMusicList(params object[] parms)
+        {
+            var name = parms[0];
+            var csrf_token = ExtractMethod.GetResult(ExtractType.Regex, logininfo.cookie, "__csrf=(.+?)($|;)", new RegexPam { Group = 1 });
+            //标准头
+            HttpItem item = new HttpItem();
+            item.URL = $"https://music.163.com/weapi/playlist/create?csrf_token={csrf_token}";
+            item.Postdata  = Encrypt_Music163.EncryptedRequest(JsonConvert.SerializeObject(new
+            {
+                checkToken = "9ca170e2e6eed9f954f4a6abacf869a68e8fa6c54b828a9aaef4508c95f7a4f15292eaa0a3d12af0feaec3b92a98e8a78eee3eaeac9a86d95a938b9fb3d85e8bf199b9b44e938bbeb7e162969bee9e",
+                name,
+                csrf_token
+            }));
+            item.UserAgent = UA;
+            item.Referer = "https://music.163.com/my/";
+            item.ContentType = "application/x-www-form-urlencoded";
+            item.Accept = "*/*";
+            item.Cookie = logininfo.cookie;
+            item.Method = "POST";
+            //自定义头
+            item.Header.Add("Accept-Encoding", "gzip, deflate, br");
+            item.Header.Add("Accept-Language", "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2");
+            item.Header.Add("Origin", "https://music.163.com");
+            item.ProxyIp = "127.0.0.1:8888";
+            String html = HttpMethod.HttpWork(item).Html;
+            Console.WriteLine(html);
+        }
+
+        public override IMusicInfo SearchMusci(params object[] parms)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -23,5 +23,19 @@ namespace Xray.APP.Impoter.Interfaces
         /// 导出到Excel
         /// </summary>
         void OutPutMusicListToExcel();
+        /// <summary>
+        /// 创建歌单
+        /// </summary>
+        void CreateMusicList(params object[] parms);
+        /// <summary>
+        /// 加入歌曲到歌单
+        /// </summary>
+        /// <param name="parms"></param>
+        void AddMusicToList(params object[] parms);
+        /// <summary>
+        /// 搜索歌曲
+        /// </summary>
+        /// <returns></returns>
+        IMusicInfo SearchMusci(params object[] parms);
     }
 }
