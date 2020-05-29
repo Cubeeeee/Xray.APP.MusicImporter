@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xray.Tools.ExtractLib" Version="1.0.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Xray.APP.Impoter.Interfaces\Xray.APP.Impoter.Interfaces.csproj" />
   </ItemGroup>
 

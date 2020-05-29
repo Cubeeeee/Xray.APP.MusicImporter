@@ -1153,14 +1153,17 @@
                     d && (c = hb($b(Zb(bc(aa(m + l + c + b[500]))))),
                         a.t = Tb(c));
                     try {
-                        window.xxycc = Ma(JSON[b[350]](a));
+                        return Ma(JSON[b[350]](a))
                     } catch (f) {
-                        window.xxycc = Ma(b[371]);
+                        return Ma(b[371])
                     }
-                    return window.xxycc
                 }
-                window.ac = ac;
-                window.cc = cc;
+                window.test = function () {
+                    return l = ea().k(ra) || h[0];
+                }
+                window.xxy = function () {
+                    return cc({ C: ac(), ja: false });
+                };
                 function mb() {
                     var a = ea().k(ra)
                         , c = X().k(nb)
@@ -1645,6 +1648,7 @@
                     if (typeof a[b[196]] === b[295])
                         a[b[196]](c)
                 }
+         
                 Array.prototype.forEach || (Array.prototype.forEach = function (e, c) {
                     var d, l;
                     if (null == this)
@@ -3678,7 +3682,6 @@
                     }
                     M(d) !== b[295] && (g = d,
                         d = void 0);
-                    window.xxy = this;
                     var n = this.h
                         , q = n.S
                         , t = n.cc
@@ -3710,7 +3713,6 @@
                     }
                 }
                     ;
-                window.ga = g.prototype.ga;
                 g.prototype._getToken = function (a, b, d, f) {
                     var g = this;
                     void 0 === b && (b = W);
@@ -3738,7 +3740,3 @@
     )()
 }
 )();
-function xxyfunc() {
-    window.ga("bd5d2f973ef74cd2a61325a412ae54d9", Function.prototype.f4j, undefined, undefined);
-    return window.
-}

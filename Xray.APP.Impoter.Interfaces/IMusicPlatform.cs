@@ -33,9 +33,15 @@ namespace Xray.APP.Impoter.Interfaces
         /// <param name="parms"></param>
         void AddMusicToList(params object[] parms);
         /// <summary>
-        /// 搜索歌曲
+        /// 搜索歌曲 联想接口
         /// </summary>
         /// <returns></returns>
-        IMusicInfo SearchMusci(params object[] parms);
+        List<IMusicInfo> SearchMusic_Suggest(params object[] parms);
+        /// <summary>
+        /// 搜索歌曲
+        /// </summary>
+        /// <param name="parms"></param>
+        /// <returns></returns>
+        List<IMusicInfo> SearchMusic(params object[] parms);
     }
 }

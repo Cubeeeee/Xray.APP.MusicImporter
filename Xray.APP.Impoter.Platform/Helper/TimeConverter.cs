@@ -16,7 +16,7 @@ namespace Xray.APP.Impoter.Platform.Helper
         /// <returns></returns>
         public static String ToMinSecond(object millsecond)
         {
-            TimeSpan tp = default;
+            TimeSpan tp = default(TimeSpan);
             try
             {
                 tp = TimeSpan.FromMilliseconds(Convert.ToDouble(millsecond));

@@ -1,5 +1,6 @@
 ﻿using OfficeOpenXml;
 using System;
+using System.Collections.Generic;
 using Xray.APP.Impoter.Interfaces;
 
 namespace Xray.APP.Impoter.Platform
@@ -30,6 +31,7 @@ namespace Xray.APP.Impoter.Platform
             throw new NotImplementedException();
         }
 
-        public abstract IMusicInfo SearchMusci(params object[] parms);
+        public abstract List<IMusicInfo> SearchMusic(params object[] parms);
+        public abstract List<IMusicInfo> SearchMusic_Suggest(params object[] parms);
     }
 }
