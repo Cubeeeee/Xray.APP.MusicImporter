@@ -10,20 +10,24 @@ namespace Xray.APP.Impoter.Interfaces
     public interface IMusicInfo
     {
         /// <summary>
-        /// 标题
+        /// 歌名/标题
         /// </summary>
-        String title { get; set; }
+        String name { get; set; }
         /// <summary>
         /// 时长
         /// </summary>
         String time { get; set; }
         /// <summary>
-        /// 歌手
-        /// </summary>
-        String singer { get; set; }
-        /// <summary>
         /// 专辑
         /// </summary>
         String album { get; set; }
+        /// <summary>
+        /// 歌曲状态
+        /// </summary>
+        SongStatue songStatue { get; set; }
+        /// <summary>
+        /// 歌手信息
+        /// </summary>
+        List<ISingerInfo> singers { get; set; }
     }
 }

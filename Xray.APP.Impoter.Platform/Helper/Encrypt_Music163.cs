@@ -32,6 +32,9 @@ namespace Xray.APP.Impoter.Platform.Helper
         {
             // key
             var secKey = CreateSecretKey(16);
+            //Console.WriteLine($"secKey:{secKey}");
+            //有时候会失败  所以直接固定密钥了
+            secKey = "oUCb6k473aBQFUgv";
             // aes
             var encTextFisrt = AesEncrypt(text, nonce, iv);
             var encText = AesEncrypt(encTextFisrt, secKey, iv);
@@ -114,7 +117,7 @@ namespace Xray.APP.Impoter.Platform.Helper
             // 幂取模，转为10进制
             rs = BigInteger.ModPow(t, p, m).ToString("x");
 
-            // 使用前导零填充到特定的长度
+            // 使用后导零填充到特定的长度
             rs = ZeroFill(rs, 256);
 
             return rs;
@@ -140,14 +143,15 @@ namespace Xray.APP.Impoter.Platform.Helper
         /// <returns>处理后的字符串</returns>
         private static String ZeroFill(String str, Int32 size)
         {
+            //去掉前面的0
+            while (str.StartsWith("0"))
+            {
+                str = str.Substring(1, str.Length-1);
+            }
+            //右填充0
             if (str.Length < size)
             {
-                str = str.PadLeft(size, '0');
-            }
-            //去掉超出位数的0
-            while(str.Length>size)
-            {
-                str = str.Substring(0, size);
+                str = str.PadRight(size, '0');
             }
             return str;
         }

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EPPlus" Version="5.1.2" />
     <PackageReference Include="Xray.Tools.ExtractLib" Version="1.0.4.7" />
     <PackageReference Include="Xray.Tools.HttpToolsLib" Version="1.1.5" />
   </ItemGroup>

@@ -5,23 +5,21 @@ using System.Text;
 namespace Xray.APP.Impoter.Interfaces
 {
     /// <summary>
-    /// 平台相关接口
+    /// 歌手信息
     /// </summary>
-    public interface IMusicPlatform
+    public interface ISingerInfo
     {
         /// <summary>
-        /// 登录
+        /// 歌手名
         /// </summary>
-        /// <returns></returns>
-        void Login();
+        String name { get; set; }
         /// <summary>
-        /// 获取用户信息
+        /// 歌手id
         /// </summary>
-        /// <returns></returns>
-        void GetUserInfo();
+        String id { get; set; }
         /// <summary>
-        /// 导出到Excel
+        /// 数据来源平台
         /// </summary>
-        void OutPutMusicListToExcel();
+        PlatformType platform { get; set; }
     }
 }
