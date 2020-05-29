@@ -15,7 +15,7 @@ namespace Xray.APP.TestDemo
             //platform.OutPutMusicListToExcel();
             //platform.AddMusicToList("5040781264",new List<String> { "470268206", "428387141", "418257349", "1451454746", "445546621" });
             //platform.SearchMusic_Suggest("说谎" ,8);
-            platform.SearchMusic("说谎" ,30);
+            //platform.SearchMusic("说谎" ,30);
             Console.WriteLine("完毕");
             Console.ReadLine();
         }
