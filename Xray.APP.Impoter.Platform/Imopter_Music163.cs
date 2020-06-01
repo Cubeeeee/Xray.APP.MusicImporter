@@ -261,6 +261,48 @@ namespace Xray.APP.Impoter.Platform
             Console.WriteLine(JsonConvert.SerializeObject(musics));
             return musics;
         }
+        public override bool CheckLogin(params object[] parms)
+        {
+            if(logininfo == null)
+            {
+                return false;
+            }
+            var csrf_token = ((LoginInfo_163)logininfo)?.csrf_token;
+            bool flag = false;
+            //标准头
+            HttpItem item = new HttpItem();
+            item.URL = "https://music.163.com/weapi/nmusician/userinfo/get?csrf_token=";
+            item.Postdata = Encrypt_Music163.EncryptedRequest(JsonConvert.SerializeObject(new
+            {
+                csrf_token
+            }));
+            item.UserAgent = UA;
+            item.Referer = "https://music.163.com/my/";
+            item.ContentType = "application/x-www-form-urlencoded";
+            item.Accept = "*/*";
+            item.Cookie = logininfo.cookie;
+            item.Method = "POST";
+            //自定义头
+            item.Header.Add("Accept-Encoding", "gzip, deflate, br");
+            item.Header.Add("Accept-Language", "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2");
+            item.Header.Add("Origin", "https://music.163.com");
+            String html = HttpMethod.HttpWork(item).Html;
+            if (JsonConvert.DeserializeObject(html) is JObject jobj)
+            {
+                flag = Convert.ToString(jobj.SelectToken("code")).Equals("200") && Convert.ToString(jobj.SelectToken("result.userStatus")).Equals("0");
+            }
+            return flag;
+        }
+        /// <summary>
+        /// 通过Cookie设置登录
+        /// </summary>
+        /// <param name="parms">cookie</param>
+        /// <returns></returns>
+        public override bool SetLoginInfo(params object[] parms)
+        {
+            this.logininfo = new LoginInfo_163 { cookie = Convert.ToString(parms[0]) };
+            return CheckLogin(parms);
+        }
         #endregion
 
         private List<IMusicList> GetMusicList(String userid)
@@ -426,5 +468,7 @@ namespace Xray.APP.Impoter.Platform
         {
             return HttpMethod.FastMethod_HttpHelper(checktokenurl);
         }
+
+  
     }
 }

@@ -18,6 +18,7 @@ namespace Xray.APP.Impoter.Platform
         public IUserInfo userinfo { get;  set; }
 
         public abstract void AddMusicToList(params object[] parms);
+        public abstract bool CheckLogin(params object[] parms);
         public abstract void CreateMusicList(params object[] parms);
         public abstract void GetUserInfo();
 
@@ -33,5 +34,6 @@ namespace Xray.APP.Impoter.Platform
 
         public abstract List<IMusicInfo> SearchMusic(params object[] parms);
         public abstract List<IMusicInfo> SearchMusic_Suggest(params object[] parms);
+        public abstract bool SetLoginInfo(params object[] parms);
     }
 }

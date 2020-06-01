@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Xray.Tools.ExtractLib.Encode;
+using Xray.Tools.ExtractLib.Extract;
 using Xray.Tools.SimpleServer;
 
 namespace Xray.Helper.Browser.Music163
@@ -72,7 +73,7 @@ namespace Xray.Helper.Browser.Music163
                                         String js = $"window.xxy()";
                                         context.EvaluateScript(js, out result);
                                     }
-                                    catch (Exception)
+                                    catch (Exception ex)
                                     {
                                         result = JsonConvert.SerializeObject(new { code = 1, message = "计算失败" });
                                     }
@@ -134,7 +135,7 @@ namespace Xray.Helper.Browser.Music163
         private void TrackMethod(Session oSession)
         {
             Console.WriteLine(oSession.fullUrl);
-            if (oSession.fullUrl.Contains("acstatic-dun.126.net/2.7.0_5e18cbf4/watchman.min.js"))
+            if (oSession.fullUrl.EndsWith("watchman.min.js"))
             {
                 oSession.utilDecodeResponse();
                 oSession.utilSetResponseBody(js);
