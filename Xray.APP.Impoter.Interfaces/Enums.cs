@@ -7,7 +7,9 @@ namespace Xray.APP.Impoter.Interfaces
     /// <summary>
     /// 平台
     /// </summary>
-    public enum PlatformType {Music163 }
+    public enum PlatformType {Music163,
+        MusicQQ
+    }
     /// <summary>
     /// 歌单类型
     /// </summary>

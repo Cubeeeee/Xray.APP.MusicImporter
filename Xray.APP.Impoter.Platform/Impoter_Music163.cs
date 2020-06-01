@@ -22,7 +22,7 @@ using Xray.Tools.HttpToolsLib;
 
 namespace Xray.APP.Impoter.Platform
 {
-    public class Imopter_Music163 : Impoter_Base
+    public class Impoter_Music163 : Impoter_Base
     {
         const String checktokenurl = "http://127.0.0.1:8001/api/token";
         const String UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:76.0) Gecko/20100101 Firefox/76.0";

@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Xray.Tools.SimpleServer;
 
-namespace Xray.Helper.Browser.TempProject
+namespace Xray.Helper.Browser.MusicQQ
 {
     /// <summary>
     /// 模板项目
@@ -27,41 +27,47 @@ namespace Xray.Helper.Browser.TempProject
         /// </summary>
         static String APIAddress { get; set; } = ConfigurationManager.AppSettings["Host"];
 
-        const String url = "http://blog.nb-ray.com/";
+        const String url = "https://i.y.qq.com/n2/m/share/details/taoge.html?ADTAG=myqq&from=myqq&channel=10007100&id=7256928516";
         public Form1()
         {
             InitializeComponent();
-            this.Text = "浏览器辅助服务";
+            this.Text = "浏览器辅助服务_QQ";
             panel1.Controls.Add(browser);
             browser.Navigate(url);
             browser.DocumentCompleted += (ss, ee) =>
             {
                 //加载完毕
                 //method 请求方式  address 请求地址 body请求体
-                SimpleServer.StartServer(APIAddress, (method, address, body) => {
+                SimpleServer.StartServer(APIAddress, (method, address, body) =>
+                {
                     ///响应内容
                     String response = String.Empty;
                     switch (method.ToUpper())
                     {
                         case "GET":
-
                             break;
                         case "POST":
                             string result = String.Empty; ;
 
-                            if (JsonConvert.DeserializeObject(body) is JObject jobj)
+                            if (address.EndsWith("api/sign"))
                             {
-                                if (address.EndsWith("api/"))
+                                this.Invoke(new Action(() =>
                                 {
-                                    this.Invoke(new Action(() => {
+                                    try
+                                    {
                                         //使用浏览器执行一些操作
                                         using (AutoJSContext context = new AutoJSContext(browser.Window))
                                         {
-                                            //context.EvaluateScript($"encrypt.setPublicKey('{jobj.SelectToken("publickey")}')", out result);
+                                            String js = $"M.getSecuritySign('{body.Replace("\"", "\\\"")}')";
+                                            context.EvaluateScript(js, out result);
                                             //context.EvaluateScript($"encrypt.encrypt('{jobj.SelectToken("text")}')", out result);
                                         }
-                                    }));
-                                }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                    }
+
+                                }));
                             }
                             response = JsonConvert.SerializeObject(new { result });
                             break;

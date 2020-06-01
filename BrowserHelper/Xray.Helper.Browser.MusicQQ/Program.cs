@@ -6,11 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Xray.Helper.Browser.TempProject
+namespace Xray.Helper.Browser.MusicQQ
 {
     static class Program
     {
-        static int port = Convert.ToInt32( ConfigurationManager.AppSettings["FiddlerPort"]);
+        static int port = Convert.ToInt32(ConfigurationManager.AppSettings["FiddlerPort"]);
         static String UA = ConfigurationManager.AppSettings["UA"];
         /// <summary>
         /// 应用程序的主入口点。

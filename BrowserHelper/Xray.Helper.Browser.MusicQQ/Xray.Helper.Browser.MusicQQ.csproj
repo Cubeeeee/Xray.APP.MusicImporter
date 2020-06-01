@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{57E98D81-5B2F-4979-90EB-6D329B63F007}</ProjectGuid>
+    <ProjectGuid>{E63ABC0E-3589-40E1-A731-4F84D6C89B8F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Xray.Helper.Browser.TempProject</RootNamespace>
-    <AssemblyName>Xray.Helper.Browser.TempProject</AssemblyName>
+    <RootNamespace>Xray.Helper.Browser.MusicQQ</RootNamespace>
+    <AssemblyName>Xray.Helper.Browser.MusicQQ</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
