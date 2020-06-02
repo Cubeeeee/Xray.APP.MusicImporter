@@ -9,10 +9,20 @@ namespace Xray.APP.TestDemo
     {
         static void Main(string[] args)
         {
-            Test163();
+            TestQQ();
 
             Console.ReadLine();
         }
+
+        private static void TestQQ()
+        {
+            IMusicPlatform platform = new Impoter_MusicQQ();
+            platform.SetLoginInfo("yqq_stat=0; pgv_pvi=3460326400; pgv_si=s9341173760; pgv_info=ssid=s1193431101; pgv_pvid=991575316; ts_uid=4230256586; idt=1591071055; ts_refer=cn.bing.com/; ts_last=y.qq.com/portal/profile.html; _qpsvr_localtk=0.2957930589685578; RK=lWCAx5NWZl; ptcz=a4c0ff95a52082ce6064236019d66e4c280761607ff8852eae3b9d97e4d3737b; qm_keyst=Q_H_L_2GMqLx50eC4DeNShJGb3auqV-xvYBuRqRISgwaUKaa8lPrvjO5ktIDn2ytRlca8; psrf_qqopenid=31BA214E49A095A8EBCCA257B9EEC4D0; uin=462247201; psrf_qqunionid=25CB47D4065E5F229F9214D549D336DB; psrf_musickey_createtime=1591071076; qqmusic_key=Q_H_L_2GMqLx50eC4DeNShJGb3auqV-xvYBuRqRISgwaUKaa8lPrvjO5ktIDn2ytRlca8; psrf_access_token_expiresAt=1598847076; psrf_qqaccess_token=5574AEA78D32767BD031915358B8FFA6; psrf_qqrefresh_token=6E0A55C8F0B5FE751ABB2AF3981AC862");
+            platform.GetUserInfo();
+            //platform.AddMusicToList("001NmPTG1fVsUw","3");
+            platform.SearchMusic_Suggest("彩虹");
+        }
+
         /// <summary>
         /// 测试163
         /// </summary>

@@ -21,6 +21,7 @@ namespace Xray.Helper.Browser.TempProject
     public partial class Form1 : Form
     {
         GeckoWebBrowser browser = new GeckoWebBrowser() { Dock = DockStyle.Fill };
+        static nsICookieManager CookieMan;
 
         /// <summary>
         /// 简易HTTP服务器地址
@@ -32,6 +33,9 @@ namespace Xray.Helper.Browser.TempProject
         {
             InitializeComponent();
             this.Text = "浏览器辅助服务";
+            CookieMan = Xpcom.GetService<nsICookieManager>("@mozilla.org/cookiemanager;1");
+            CookieMan = Xpcom.QueryInterface<nsICookieManager>(CookieMan);
+            CookieMan.RemoveAll();
             panel1.Controls.Add(browser);
             browser.Navigate(url);
             browser.DocumentCompleted += (ss, ee) =>

@@ -141,5 +141,11 @@ namespace Xray.Helper.Browser.Music163
                 oSession.utilSetResponseBody(js);
             }
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Fiddler.FiddlerApplication.Shutdown();
+
+        }
     }
 }

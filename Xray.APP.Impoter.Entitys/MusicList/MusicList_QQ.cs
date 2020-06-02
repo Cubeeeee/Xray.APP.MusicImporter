@@ -14,5 +14,7 @@ namespace Xray.APP.Impoter.Entitys.MusicList
         /// 子标题
         /// </summary>
         public String subtitle { get; set; }
+
+        public String dirid { get; set; }
     }
 }
