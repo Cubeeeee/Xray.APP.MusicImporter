@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Xray.APP.Importer.Entitys</AssemblyName>
+    <RootNamespace>Xray.APP.Importer.Entitys</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xray.Tools.ExtractLib" Version="1.0.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Xray.APP.Importer.Interfaces\Xray.APP.Impoter.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

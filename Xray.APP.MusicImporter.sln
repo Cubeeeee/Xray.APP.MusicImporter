@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30104.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{ACBF3A09-3A84-4929-AB12-213384D0D623}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.TestDemo", "Xray.APP.TestDemo\Xray.APP.TestDemo.csproj", "{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BrowserHelper", "BrowserHelper", "{BBC6E570-A2AF-4248-BBED-5D5709ECA4B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xray.Helper.Browser.TempProject", "BrowserHelper\Xray.Helper.Browser.TempProject\Xray.Helper.Browser.TempProject.csproj", "{57E98D81-5B2F-4979-90EB-6D329B63F007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xray.Helper.Browser.Music163", "BrowserHelper\Xray.Helper.Browser.Music163\Xray.Helper.Browser.Music163.csproj", "{B6AF88E6-6756-41BA-B300-741544493F2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLL", "DLL", "{5F31E859-DDFB-4A71-9D87-9D5C9F0A76DD}"
+	ProjectSection(SolutionItems) = preProject
+		DLL\FiddlerCore4.dll = DLL\FiddlerCore4.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xray.Helper.Browser.MusicQQ", "BrowserHelper\Xray.Helper.Browser.MusicQQ\Xray.Helper.Browser.MusicQQ.csproj", "{E63ABC0E-3589-40E1-A731-4F84D6C89B8F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Entitys", "Xray.APP.Importer.Entitys\Xray.APP.Impoter.Entitys.csproj", "{E0E6D836-9B7F-407F-B705-D682D317F104}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Interfaces", "Xray.APP.Importer.Interfaces\Xray.APP.Impoter.Interfaces.csproj", "{960B5948-0D2A-4569-B7C4-02996B5C6D20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xray.APP.Impoter.Platform", "Xray.APP.Importer.Platform\Xray.APP.Impoter.Platform.csproj", "{C3247525-1183-49FD-A189-ACAE961717A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAA79563-4A1F-41CB-9EFA-50F47EC9685A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57E98D81-5B2F-4979-90EB-6D329B63F007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E98D81-5B2F-4979-90EB-6D329B63F007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E98D81-5B2F-4979-90EB-6D329B63F007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E98D81-5B2F-4979-90EB-6D329B63F007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6AF88E6-6756-41BA-B300-741544493F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6AF88E6-6756-41BA-B300-741544493F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6AF88E6-6756-41BA-B300-741544493F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6AF88E6-6756-41BA-B300-741544493F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E63ABC0E-3589-40E1-A731-4F84D6C89B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E63ABC0E-3589-40E1-A731-4F84D6C89B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E63ABC0E-3589-40E1-A731-4F84D6C89B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E63ABC0E-3589-40E1-A731-4F84D6C89B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0E6D836-9B7F-407F-B705-D682D317F104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0E6D836-9B7F-407F-B705-D682D317F104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0E6D836-9B7F-407F-B705-D682D317F104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0E6D836-9B7F-407F-B705-D682D317F104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{960B5948-0D2A-4569-B7C4-02996B5C6D20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{960B5948-0D2A-4569-B7C4-02996B5C6D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{960B5948-0D2A-4569-B7C4-02996B5C6D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{960B5948-0D2A-4569-B7C4-02996B5C6D20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3247525-1183-49FD-A189-ACAE961717A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3247525-1183-49FD-A189-ACAE961717A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3247525-1183-49FD-A189-ACAE961717A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3247525-1183-49FD-A189-ACAE961717A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EAA79563-4A1F-41CB-9EFA-50F47EC9685A} = {ACBF3A09-3A84-4929-AB12-213384D0D623}
+		{57E98D81-5B2F-4979-90EB-6D329B63F007} = {BBC6E570-A2AF-4248-BBED-5D5709ECA4B7}
+		{B6AF88E6-6756-41BA-B300-741544493F2F} = {BBC6E570-A2AF-4248-BBED-5D5709ECA4B7}
+		{E63ABC0E-3589-40E1-A731-4F84D6C89B8F} = {BBC6E570-A2AF-4248-BBED-5D5709ECA4B7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6478FCF6-86ED-4B91-A120-B377BB4CBB9D}
+	EndGlobalSection
+EndGlobal

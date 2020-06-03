@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Xray.APP.Importer.Interfaces</AssemblyName>
+    <RootNamespace>Xray.APP.Importer.Interfaces</RootNamespace>
+  </PropertyGroup>
+
+</Project>
