@@ -184,17 +184,5 @@ namespace Xray.APP.Importer.Platform
             return (1.0 - (stepsToSame / (double)Math.Max(source.Length, target.Length)));
 
         }
-        /// <summary>
-        /// 删除特殊字符进行包含匹配
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        private bool ContainX(String a, String b)
-        {
-            a = Regex.Replace(a, "[`~!@#$%^&*()_\\-+=<>?:\"{}|,.\\/;'\\\\[\\]·~！@#￥%……&*（）——\\-+={}|《》？：“”【】、；‘'，。、\\s]", String.Empty).Trim().ToUpper();
-            b = Regex.Replace(b, "[`~!@#$%^&*()_\\-+=<>?:\"{}|,.\\/;'\\\\[\\]·~！@#￥%……&*（）——\\-+={}|《》？：“”【】、；‘'，。、\\s]", String.Empty).Trim().ToUpper();
-            return a.Contains(b) || b.Contains(a);
-        }
     }
 }
