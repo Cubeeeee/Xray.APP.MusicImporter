@@ -27,5 +27,16 @@ namespace Xray.APP.Importer.Platform.Helper
             }
             return $"{tp.Minutes}:{tp.Seconds}";
         }
+
+        public static int ToSecond(String time)
+        {
+            var arr = time.Split(':');
+            return Convert.ToInt32(arr[0]) * 60 + Convert.ToInt32(arr[1]);
+        }
+        public static double ToSecondDouble(String time)
+        {
+            var arr = time.Split(':');
+            return Convert.ToDouble(arr[0]) * 60 + Convert.ToInt32(arr[1]);
+        }
     }
 }

@@ -23,7 +23,8 @@ namespace Xray.APP.Importer.Interfaces
         /// <summary>
         /// 导出歌单到Excel
         /// </summary>
-        void OutPutMusicListToExcel();
+        /// <param name="path">导出绝对路径</param>
+        void OutPutMusicListToExcel(String path);
         /// <summary>
         /// 创建歌单
         /// </summary>
@@ -56,6 +57,13 @@ namespace Xray.APP.Importer.Interfaces
         /// <param name="parms"></param>
         /// <returns></returns>
         bool CheckLogin(params object[] parms);
+        /// <summary>
+        /// 快乐按钮（歌单导入）
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        bool ImportList(IMusicList from, IMusicList to);
 
     }
 }

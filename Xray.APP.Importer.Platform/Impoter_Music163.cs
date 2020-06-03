@@ -50,53 +50,14 @@ namespace Xray.APP.Importer.Platform
         {
             this.logininfo = new LoginInfo_163 { cookie = "JSESSIONID-WYYY=u8F6EdvHP7f%2BM0b1I5kDoZ%5CcCYNoF0HpBg%2FBxDamK83rBEuplhl9XB2RZU2ZPYVigqrka5GHYl%2BdjcGSoA8lxr%5C5zoQj6CWj9l6%2FT1TlsQ%5CxO8HjlU%5CEE8Dgegl3RXjuA6fiYXVKCXWT%5C4eERb9PMadui%5COs%5CDhnT%2FE0QG1JKx7KXEyz%3A1590746230847; _iuqxldmzr_=32; _ntes_nnid=9443153b364c4a672be28ceb6be416f2,1590565485214; _ntes_nuid=9443153b364c4a672be28ceb6be416f2; WM_NI=nTY9lsMyaPBKTJI%2FYsSUA%2BUg1w8uSEXeUsq6l49bmo7nPYQZMTzfNX2YZIbXXO8XeiF5k0nW%2FFwmrtR8lCv5w1dl0luK8lx8j8oSYj28ZeFcwnn0MLBH5qAXVSN054wFWWE%3D; WM_NIKE=9ca17ae2e6ffcda170e2e6eea4b83dfbee8a84e13eb7b08ea7d45a939f9fbaf5508591ba90d46e94b29b84e72af0fea7c3b92aae8c97daef798fa7afb1c141989687d0dc79918b8fccd86df3a9f896d24f9cbb9b94f43eb0ecf783f065f5b2a0bad4528f8cb687cd54f28796aae1549c91f8b9e86386eba5d1ed5ded9ab98ef18092e8a4a4f53fb5efac8db368b795f88dfb34aae8a1b4dc62f2e89686c569b5b2a2d1d0488298fb92c454968d82d1b840b59a99b8c837e2a3; WM_TID=fZj46A%2BR3W1BBVEQUBYuXXNiRmswwU8P; MUSIC_U=692dd5da248da10ebc9df0fe720b89da660c7855cf4ec47035ea031e17da4a1a33a649814e309366; __remember_me=true; __csrf=3098a1827297e2b132274f6e6c217aa0; ntes_kaola_ad=1" };
         }
-        public override void OutPutMusicListToExcel()
-        {
-            using (ExcelPackage package = new ExcelPackage())
-            {
-                foreach (var item in userinfo.musicLists)
-                {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add($"{item.name}_{Enum.GetName(typeof(MusicListType), item.musicListType)}");//创建worksheet
-                    worksheet.DefaultColWidth = 25;
-                    worksheet.DefaultColWidth = 20;
-                    worksheet.Cells.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-                    //标题
-                    worksheet.Cells[1, 1].Value = "歌曲名称";
-                    worksheet.Cells[1, 2].Value = "时长";
-                    worksheet.Cells[1, 3].Value = "专辑名";
-                    worksheet.Cells[1, 4].Value = "歌手";
-                    worksheet.Cells[1, 5].Value = "歌曲状态";
-                    worksheet.Cells[1, 6].Value = "播放地址";
-                    //Ok now format the values;
-                    using (var range = worksheet.Cells[1, 1, 1, 6])
-                    {
-                        range.Style.Font.Bold = true;
-                        range.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                        range.Style.Fill.BackgroundColor.SetColor(Color.DarkBlue);
-                        range.Style.Font.Color.SetColor(Color.White);
-                    }
-                    for (int i = 0; i < item.musics.Count; i++)
-                    {
-                        worksheet.Cells[i + 2, 1].Value = item.musics[i].name;
-                        worksheet.Cells[i + 2, 2].Value = item.musics[i].time;
-                        worksheet.Cells[i + 2, 3].Value = item.musics[i].album;
-                        worksheet.Cells[i + 2, 4].Value = String.Join(",", from a in item.musics[i].singers select a.name);
-                        worksheet.Cells[i + 2, 5].Value = Enum.GetName(typeof(SongStatue), item.musics[i].songStatue);
-                        worksheet.Cells[i + 2, 6].Value = $"https://music.163.com/#/song?id={((MusicInfo_163)item.musics[i]).musicid_163}";
-                    }
-                    package.SaveAs(new FileInfo("xxy.xlsx"));
-                }
-
-            }
-        }
         /// <summary>
         /// 加入歌曲到歌单
         /// </summary>
         /// <param name="parms">0 目标歌单id  1歌曲id列表</param>
         public override void AddMusicToList(params object[] parms)
         {
-            String targetid = Convert.ToString(parms[0]);
-            List<String> songs = (List<String>)(parms[1]);
+            String targetid = (parms[0] as MusicList_163).musiclist_id;
+            var songs = from a in (parms[1] as List<IMusicInfo>) select (a as MusicInfo_163).musicid_163;
             var csrf_token = ((LoginInfo_163)logininfo).csrf_token;
             //标准头
             HttpItem item = new HttpItem();
@@ -152,13 +113,13 @@ namespace Xray.APP.Importer.Platform
         /// <summary>
         /// 搜索 联想
         /// </summary>
-        /// <param name="parms">s limit</param>
+        /// <param name="parms">s limit 默认10</param>
         /// <returns></returns>
         public override List<IMusicInfo> SearchMusic_Suggest(params object[] parms)
         {
             List<IMusicInfo> musics = new List<IMusicInfo>();
             String s = Convert.ToString(parms[0]);
-            String limit = Convert.ToString(parms[1]);
+            String limit = parms.Length<2?"10": Convert.ToString(parms[1]);
             //标准头
             HttpItem item = new HttpItem();
             item.URL = "https://music.163.com/weapi/search/suggest/web";
@@ -209,7 +170,7 @@ namespace Xray.APP.Importer.Platform
         {
             List<IMusicInfo> musics = new List<IMusicInfo>();
             String s = Convert.ToString(parms[0]);
-            String limit = Convert.ToString(parms[1]);
+            String limit = parms.Length<2?"20": Convert.ToString(parms[1]);
             //标准头
             HttpItem item = new HttpItem();
             item.URL = "https://music.163.com/weapi/cloudsearch/get/web?csrf_token=";
@@ -342,13 +303,21 @@ namespace Xray.APP.Importer.Platform
                         {
                             songcount = default(int);
                         }
+                        var musicListType = Convert.ToString(item.SelectToken("creator.userId")).Equals(userid) ? MusicListType.Owner : MusicListType.Collection;
+#if DEBUG
+                        //调试的时候搜藏歌单不进去了
+                        if(musicListType == MusicListType.Collection)
+                        {
+                            continue;
+                        }
+#endif
                         IMusicList templist = new MusicList_163
                         {
                             authorname = Convert.ToString(item.SelectToken("creator.nickname")),
                             avatarUrl = Convert.ToString(item.SelectToken("creator.avatarUrl")),
                             createtime = EncodeMethod.GetDateTime(Convert.ToString(item.SelectToken("createTime"))),
                             updatetime = EncodeMethod.GetDateTime(Convert.ToString(item.SelectToken("updateTime"))),
-                            musicListType = Convert.ToString(item.SelectToken("creator.userId")).Equals(userid) ? MusicListType.Owner : MusicListType.Collection,
+                            musicListType = musicListType,
                             musiclist_id = musiclist_id,
                             name = Convert.ToString(item.SelectToken("name")),
                             songcount = Convert.ToString(songcount),
@@ -362,7 +331,6 @@ namespace Xray.APP.Importer.Platform
 #endif
                         lists.Add(templist);
 #if DEBUG
-                        break;
 #endif
                     }
                 }
@@ -406,17 +374,18 @@ namespace Xray.APP.Importer.Platform
                 {
                     foreach (var tk in jarr)
                     {
+                        var musicid_163 = Convert.ToString(tk.SelectToken("id"));
                         musicInfos.Add(new MusicInfo_163
                         {
                             name = Convert.ToString(tk.SelectToken("name")),
-                            musicid_163 = Convert.ToString(tk.SelectToken("id")),
+                            musicid_163 = musicid_163,
                             singers = GetSingers(tk.SelectTokens("ar[*]")),
                             album = Convert.ToString(tk.SelectToken("al.name")),
                             albumid_163 = Convert.ToString(tk.SelectToken("al.id")),
                             albumpic_163 = Convert.ToString(tk.SelectToken("al.picUrl")),
                             time = TimeConverter.ToMinSecond(tk.SelectToken("dt")),
                             songStatue = GetStatue(Convert.ToString(tk.SelectToken("pv.st")), Convert.ToString(tk.SelectToken("fee")))
-                        });
+                    });
                     }
                 }
             }
@@ -467,7 +436,5 @@ namespace Xray.APP.Importer.Platform
         {
             return HttpMethod.FastMethod_HttpHelper(checktokenurl);
         }
-
-  
     }
 }

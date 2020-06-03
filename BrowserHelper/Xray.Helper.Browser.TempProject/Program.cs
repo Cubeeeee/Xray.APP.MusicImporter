@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -10,7 +12,7 @@ namespace Xray.Helper.Browser.TempProject
 {
     static class Program
     {
-        static int port = Convert.ToInt32( ConfigurationManager.AppSettings["FiddlerPort"]);
+        static int port = GetRandomAvaliablePort();
         static String UA = ConfigurationManager.AppSettings["UA"];
         /// <summary>
         /// 应用程序的主入口点。
@@ -38,6 +40,53 @@ namespace Xray.Helper.Browser.TempProject
         private static void geckoWebBrowser1_ValidityOverride(object sender, CertOverrideEventArgs e)
         {
             e.OverrideResult = Gecko.CertOverride.Mismatch | Gecko.CertOverride.Time | Gecko.CertOverride.Untrusted; e.Temporary = true; e.Handled = true;
+        }
+        /// <summary>
+        /// 获得随机未被占用端口
+        /// </summary>
+        /// <param name="minPort"></param>
+        /// <param name="maxPort"></param>
+        /// <returns></returns>
+        public static int GetRandomAvaliablePort(int minPort = 1024, int maxPort = 65535)
+        {
+            Random rand = new Random();
+            while (true)
+            {
+                int port = rand.Next(minPort, maxPort);
+                if (!IsPortInUsed(port))
+                {
+                    return port;
+                }
+            }
+        }
+        /// <summary>
+        /// 判断端口是否被占用
+        /// </summary>
+        /// <param name="port"></param>
+        /// <returns></returns>
+        private static bool IsPortInUsed(int port)
+        {
+            IPGlobalProperties ipGlobalProps = IPGlobalProperties.GetIPGlobalProperties();
+            IPEndPoint[] ipsTCP = ipGlobalProps.GetActiveTcpListeners();
+
+            if (ipsTCP.Any(p => p.Port == port))
+            {
+                return true;
+            }
+
+            IPEndPoint[] ipsUDP = ipGlobalProps.GetActiveUdpListeners();
+            if (ipsUDP.Any(p => p.Port == port))
+            {
+                return true;
+            }
+
+            TcpConnectionInformation[] tcpConnInfos = ipGlobalProps.GetActiveTcpConnections();
+            if (tcpConnInfos.Any(conn => conn.LocalEndPoint.Port == port))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

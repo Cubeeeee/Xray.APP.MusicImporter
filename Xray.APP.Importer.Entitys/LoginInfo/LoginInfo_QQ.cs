@@ -8,6 +8,7 @@ namespace Xray.APP.Importer.Entitys.LoginInfo
 {
     public class LoginInfo_QQ: LoginInfo_Base
     {
+ 
         /// <summary>
         /// qq号
         /// </summary>

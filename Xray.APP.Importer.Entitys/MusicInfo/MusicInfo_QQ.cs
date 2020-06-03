@@ -7,6 +7,13 @@ namespace Xray.APP.Importer.Entitys.MusicInfo
     public class MusicInfo_QQ: MusicInfo_Base
     {
         /// <summary>
+        /// 覆盖基类属性
+        /// </summary>
+        public override String playurl
+        {
+            get => $"https://y.qq.com/n/yqq/song/{music_mid_qq}.html";
+        }
+        /// <summary>
         /// 单曲id
         /// </summary>
         public String musicid_qq { get; set; }

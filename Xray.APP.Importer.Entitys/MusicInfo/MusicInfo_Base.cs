@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Xray.APP.Importer.Interfaces;
 
 namespace Xray.APP.Importer.Entitys.MusicInfo
 {
-    public abstract class MusicInfo_Base: IMusicInfo
+    public abstract class MusicInfo_Base : IMusicInfo
     {
+        /// <summary>
+        /// 播放地址
+        /// </summary>
+        public virtual String playurl { get; set; }
         /// <summary>
         /// 标题
         /// </summary>
@@ -28,15 +33,6 @@ namespace Xray.APP.Importer.Entitys.MusicInfo
         /// 歌手信息
         /// </summary>
         public List<ISingerInfo> singers { get; set; }
-
-
-        public bool Equals(IMusicInfo other)
-        {
-            var singer_a = from a in singers select a.name;
-            var singer_b = from a in other.singers select a.name;
-            //单曲名称相同且歌手差集为0且专辑名称相同
-            return name.Equals(other.name) && (singer_a.Except(singer_b)?.Count() == 0) && album.Equals(other.album);
-        }
 
     }
 }

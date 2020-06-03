@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xray.APP.Importer.Entitys.LoginInfo;
 using Xray.APP.Importer.Entitys.MusicInfo;
@@ -31,12 +32,13 @@ namespace Xray.APP.Importer.Platform
         public override void AddMusicToList(params object[] parms)
         {
             LoginInfo_QQ temploginlinfo = (LoginInfo_QQ)logininfo;
-
+            String targetid = (parms[0] as MusicList_QQ).dirid;
+            var songs = from a in (parms[1] as List<IMusicInfo>) select (a as MusicInfo_QQ).music_mid_qq;
             //标准头
             HttpItem item = new HttpItem();
             item.URL = $"https://c.y.qq.com/splcloud/fcgi-bin/fcg_music_add2songdir.fcg?g_tk={temploginlinfo.csrf_token}&g_tk_new_20200303={temploginlinfo.csrf_token}";
-            item.Postdata = $"loginUin={temploginlinfo.qqmusic_key}&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.post&needNewCode=0&uin={temploginlinfo.qqmusic_key}&midlist={parms[0]}&typelist=13&dirid={parms[1]}&addtype=&formsender=4&source=153&r2=0&r3=1&utf8=1&g_tk={temploginlinfo.csrf_token}";
-            item.UserAgent = "Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.04";
+            item.Postdata = $"loginUin={temploginlinfo.qqnum}&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.post&needNewCode=0&uin={temploginlinfo.qqnum}&midlist={String.Join(",",songs)}&typelist={String.Join(",",from a in songs select "13")}&dirid={targetid}&addtype=&formsender=4&source=153&r2=0&r3=1&utf8=1&g_tk={temploginlinfo.csrf_token}";
+            item.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36";
             item.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
             item.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
             item.Cookie = logininfo.cookie;
@@ -144,7 +146,6 @@ namespace Xray.APP.Importer.Platform
                 }
             }
             String json = JsonConvert.SerializeObject(userinfo);
-
         }
         /// <summary>
         /// 
@@ -157,7 +158,7 @@ namespace Xray.APP.Importer.Platform
             List<IMusicInfo> musics = new List<IMusicInfo>();
             //标准头
             HttpItem item = new HttpItem();
-            item.URL = $"https://c.y.qq.com/soso/fcgi-bin/client_search_cp?ct=24&qqmusic_ver=1298&new_json=1&remoteplace=txt.yqq.song&searchid=&t=0&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=1&n=10&w={EncodeMethod.Encode( EncodeType.UrlEncode,parms[0])}&g_tk_new_20200303={temploginlinfo.csrf_token}&g_tk={temploginlinfo.csrf_token}&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0";
+            item.URL = $"https://c.y.qq.com/soso/fcgi-bin/client_search_cp?ct=24&qqmusic_ver=1298&new_json=1&remoteplace=txt.yqq.song&searchid=&t=0&aggr=1&cr=1&catZhida=1&lossless=0&flag_qc=0&p=1&n=20&w={EncodeMethod.Encode( EncodeType.UrlEncode,parms[0])}&g_tk_new_20200303={temploginlinfo.csrf_token}&g_tk={temploginlinfo.csrf_token}&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0";
             item.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36";
             item.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
             item.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
@@ -203,7 +204,7 @@ namespace Xray.APP.Importer.Platform
             return musics;
         }
         /// <summary>
-        /// 
+        /// q音搜索联想接口没有专辑信息
         /// </summary>
         /// <param name="parms">0 keyword</param>
         /// <returns></returns>
@@ -413,22 +414,21 @@ namespace Xray.APP.Importer.Platform
             {
                 return SongStatue.独家;
             }
-            if (track == 0)
-            {
-                return SongStatue.无版权;
-            }
-            else if (track == 200)
-            {
-                return SongStatue.正常;
-            }
-            return SongStatue.未知;
+            return SongStatue.正常;
+            //if (track == 0)
+            //{
+            //    return SongStatue.无版权;
+            //}
+            //else if (track == 200)
+            //{
+            //    return SongStatue.正常;
+            //}
+            //return SongStatue.未知;
         }
 
         private String getSign(string postdata)
         {
             return HttpMethod.FastMethod_HttpHelper(signurl, "POST", postdata);
         }
-
-
     }
 }
