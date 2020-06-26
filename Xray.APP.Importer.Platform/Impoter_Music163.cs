@@ -326,12 +326,8 @@ namespace Xray.APP.Importer.Platform
                             playtimes = Convert.ToString(item.SelectToken("playCount")),
                             musics = GetMusic(musiclist_id, songcount),
                         };
-#if DEBUG
                         Console.WriteLine(templist.name);
-#endif
                         lists.Add(templist);
-#if DEBUG
-#endif
                     }
                 }
             }
